@@ -13,11 +13,15 @@ def hello_world():
 
 @app.route("/ocr", methods=['POST'])
 def ocr():
-    file_bytes = request.get_data()
+    file_bytes = request.files.get('file').read()
 
     doc_proc_obj = DocumentPreprocess(file_bytes)
-    doc_proc_obj.process_document()
+    res = doc_proc_obj.process_document()
     
     return jsonify({
-        "status":True
+        "status": True,
+        'text': res
     })
+
+if __name__ == '__main__':
+    app.run(host="localhost", port=5002, debug=True)

@@ -3,7 +3,7 @@ import hashlib
 from PIL import Image
 
 def convert_pdf_to_images(file_bytes):
-    doc = fitz.open(file_bytes)
+    doc = fitz.Document(stream=file_bytes)
     zoom = 3
     images = []
     for page in doc:
@@ -15,10 +15,10 @@ def convert_pdf_to_images(file_bytes):
     return images
 
 def generate_hash(file_bytes):
-    return hashlib.sha256(file_bytes.read()).hexdigest()
+    return hashlib.sha256(file_bytes).hexdigest()
 
 if __name__=="__main__":
-    f_bytes = open("file.pdf", "rb")
+    f_bytes = open("file.pdf", "rb").read()
 
     print(len(convert_pdf_to_images(f_bytes)))
 
