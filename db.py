@@ -2,7 +2,9 @@ from pymongo import MongoClient
 
 class MongoDB:
     def __init__(self):
-        self.client = MongoClient('mongodb://localhost:27017/')
+        user_name = ""
+        password = ""
+        self.client = MongoClient(f'mongodb+srv://{user_name}:{password}@cluster0.cy4baor.mongodb.net/')
         self.db = self.client.text_analysis
         self.collection = self.db.ocr_response
 

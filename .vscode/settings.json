@@ -1,0 +1,29 @@
+{
+    "python.defaultInterpreterPath": ".ocr_env/bin/python",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintArgs": [
+        "--disable-msg",
+        "C0103"
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/__pycache__": true
+    },
+    "python.linting.pylintEnabled": true,
+    "python.testing.pytestArgs": [],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "terminal.integrated.shellIntegration.enabled": false,
+    "editor.rulers": [
+        88
+    ],
+    "ruff.run": "onSave",
+}

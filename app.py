@@ -11,12 +11,24 @@ api = Api(app)
 def hello_world():
     return "<p>Hello, World!</p>"
 
-@app.route("/ocr", methods=['POST'])
-def ocr():
+@app.route("/ocr_pdf", methods=['POST'])
+def ocr_pdf():
     file_bytes = request.files.get('file').read()
-
+    
     doc_proc_obj = DocumentPreprocess(file_bytes)
     res = doc_proc_obj.process_document()
+    
+    return jsonify({
+        "status": True,
+        'text': res
+    })
+    
+@app.route("/ocr_image", methods=['POST'])
+def ocr_image():
+    file_bytes = request.files.get('file').read()
+    
+    doc_proc_obj = DocumentPreprocess(file_bytes)
+    res = doc_proc_obj.process_image()
     
     return jsonify({
         "status": True,
