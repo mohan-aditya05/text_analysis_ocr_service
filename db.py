@@ -1,10 +1,12 @@
 from pymongo import MongoClient
+from decouple import config
 
 class MongoDB:
     def __init__(self):
-        user_name = ""
-        password = ""
-        self.client = MongoClient(f'mongodb+srv://{user_name}:{password}@cluster0.cy4baor.mongodb.net/')
+        user_name = config("MONGODB_USER")
+        password = config("MONGODB_PWD")
+        cluster = config("MONGODB_CLUSTER")
+        self.client = MongoClient(f'mongodb+srv://{user_name}:{password}@{cluster}/')
         self.db = self.client.text_analysis
         self.collection = self.db.ocr_response
 
